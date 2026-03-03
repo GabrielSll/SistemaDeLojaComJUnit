@@ -2,59 +2,59 @@ package model;
 
 public class Product {
     private Integer id;
-    private String nome;
-    private double preco;
-    private Integer quantidadeEstoque;
+    private String name;
+    private double price;
+    private Integer quantityStock;
 
-    public Product(Integer id, String nome, double preco, Integer quantidadeEstoque) {
+    public Product(Integer id, String name, double price, Integer quantityStock) {
         this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidadeEstoque = quantidadeEstoque;
+        this.name = name;
+        this.price = price;
+        this.quantityStock = quantityStock;
     }
 
-    public void setPreco(double preco) {
-        if (preco <= 0) {
+    public void setPrice(double price) {
+        if (price <= 0) {
             throw new IllegalArgumentException("Preço Inválido");
         }
 
-        this.preco = preco;
+        this.price = price;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public double getPreco() {
-        return preco;
+    public double getPrice() {
+        return price;
     }
 
-    public Integer getQuantidadeEstoque() {
-        return quantidadeEstoque;
+    public Integer getQuantityStock() {
+        return quantityStock;
     }
 
-    public void adicionarEstoque(int quantidade) {
-        if (quantidade <= 0) {
+    public void adicionarEstoque(int quantity) {
+        if (quantity <= 0) {
             throw new IllegalArgumentException("Não é permitido adicionar uma quantidade negativa");
         }
 
-        quantidadeEstoque += quantidade;
+        quantityStock += quantity;
     }
 
-    public void removerEstoque(int quantidade) {
-        if (quantidade <= 0) {
+    public void removerEstoque(int quantity) {
+        if (quantity <= 0) {
             throw new IllegalArgumentException("Não é permitido remover uma quantidade negativa");
         }
 
-        if (quantidade > quantidadeEstoque) {
+        if (quantity > quantityStock) {
             throw new IllegalArgumentException("Tentou remover mais do que já existe");
         }
 
-        quantidadeEstoque -= quantidade;
+        quantityStock -= quantity;
     }
 
 }

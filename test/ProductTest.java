@@ -5,48 +5,48 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductTest {
 
     @Test
-    void deveAdicionarEstoqueComSucesso() {
+    void mustAddStockSuccessfully() {
 
-        Product produto = new Product(1, "Notebook", 3500.0, 10);
+        Product product = new Product(1, "Notebook", 3500.0, 10);
 
-        produto.adicionarEstoque(5);
+        product.adicionarEstoque(5);
 
-        assertEquals(15, produto.getQuantidadeEstoque());
+        assertEquals(15, product.getQuantityStock());
     }
 
     @Test
-    void deveRemoverEstoqueComSucesso() {
-        Product produto = new Product(2, "Geladeira", 5000.0, 4);
+    void mustRemoveStockSuccessfully() {
+        Product product = new Product(2, "Geladeira", 5000.0, 4);
 
-        produto.removerEstoque(2);
+        product.removerEstoque(2);
 
-        assertEquals(2, produto.getQuantidadeEstoque());
+        assertEquals(2, product.getQuantityStock());
     }
 
     @Test
-    void naoDevePermitirAdicionarEstoqueNegativo() {
-        Product produto = new Product(3, "Celular", 4200.0, 15);
+    void shouldNotAllowAddingNegativeStock() {
+        Product product = new Product(3, "Celular", 4200.0, 15);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            produto.adicionarEstoque(-5);
+            product.adicionarEstoque(-5);
         });
     }
 
     @Test
-    void naoDevePermitirRemoverQuantidadeNegativa() {
-        Product produto = new Product(4, "Carregador", 120.0, 30);
+    void shouldNotAllowRemovingNegativeQuantity() {
+        Product product = new Product(4, "Carregador", 120.0, 30);
 
         assertThrows(IllegalArgumentException.class, () -> {
-           produto.removerEstoque(-5);
+            product.removerEstoque(-5);
         });
     }
 
     @Test
-    void naoDevePermitirRemoverQuantidadeMaiorQueAExistente() {
-        Product produto = new Product(5, "Impressora", 2200.0, 8);
+    void shouldNotAllowRemovingaQuantityGreaterThanTheExistingAmount() {
+        Product product = new Product(5, "Impressora", 2200.0, 8);
 
         assertThrows(IllegalArgumentException.class, () -> {
-           produto.removerEstoque(10);
+            product.removerEstoque(10);
         });
     }
 }

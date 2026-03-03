@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class OrderServiceTest {
     @Test
-    void deveCriarPedidoComSucesso() {
+    void mustCreateOrderSuccessfully() {
         Product product = new Product(1, "VideoGame", 5000.0, 4);
 
         Order order = new Order(1);

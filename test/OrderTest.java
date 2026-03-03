@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class OrderTest {
 
     @Test
-    void deveAdicionarProdutoNaOrderComSucesso() {
+    void mustAddProductToOrderSuccessfully() {
         Product product = new Product(1, "Mouse", 200.0, 5);
 
         Order order = new Order(1);
@@ -18,7 +18,7 @@ public class OrderTest {
     }
 
     @Test
-    void naoDeveAdicionarProdutoSemEstoqueSuficiente() {
+    void noMustAddProductWithoutEnoughStock() {
         Product product = new Product(1, "Mouse", 200.0, 5);
 
         Order order = new Order(1);
@@ -31,11 +31,11 @@ public class OrderTest {
     @Test
     void deveCalcularValorTotalDoPedidoComSucesso() {
         Product mouse = new Product(1, "Mouse", 200.0, 5);
-        Product celular = new Product(1, "Celular", 3000.0, 5);
+        Product phone = new Product(1, "Celular", 3000.0, 5);
 
         Order order = new Order(1);
         order.addProduct(mouse, 5);
-        order.addProduct(celular, 5);
+        order.addProduct(phone, 5);
 
         assertEquals(16000.0, order.totalValue());
     }

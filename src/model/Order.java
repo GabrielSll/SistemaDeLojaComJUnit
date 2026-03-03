@@ -36,7 +36,7 @@ public class Order {
             Product product = item.getKey();
             Integer quantity = item.getValue();
 
-            total += product.getPreco() * quantity;
+            total += product.getPrice() * quantity;
         }
 
         return total;

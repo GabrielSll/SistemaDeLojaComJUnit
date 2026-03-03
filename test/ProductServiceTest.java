@@ -6,49 +6,49 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProductServiceTest {
 
     @Test
-    void deveCadastrarProdutosComSucesso() {
+    void mustRegisterProductsSuccessfully() {
         ProductService service = new ProductService();
 
-        service.cadastrarProduto(1, "Ventilador", 320.0, 25);
+        service.registerProduct(1, "Ventilador", 320.0, 25);
 
-        Product produtoSalvo = service.buscarProduto(1);
+        Product saveProduct = service.findProduct(1);
 
-        assertNotNull(produtoSalvo, "O produto deveria ter sido salvo e encontrado");
-        assertEquals(1, produtoSalvo.getId());
+        assertNotNull(saveProduct, "O produto deveria ter sido salvo e encontrado");
+        assertEquals(1, saveProduct.getId());
     }
 
     @Test
-    void naoDevePermitirCadastrarComIdDuplicado() {
+    void shouldNotAllowRegistrationWithDuplicateID() {
         ProductService service = new ProductService();
 
-        service.cadastrarProduto(1, "Ventilador", 320.0, 25);
+        service.registerProduct(1, "Ventilador", 320.0, 25);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            service.cadastrarProduto(1, "Fone De Ouvido", 120.0, 10);
+            service.registerProduct(1, "Fone De Ouvido", 120.0, 10);
         });
     }
 
     @Test
-    void deveAdicionarEstoqueComSucesso() {
+    void mustAddStockWithSucess() {
         ProductService service = new ProductService();
 
-        service.cadastrarProduto(1, "Ventilador", 320.0, 25);
-        service.adicionarEstoque(1, 25);
+        service.registerProduct(1, "Ventilador", 320.0, 25);
+        service.addStock(1, 25);
 
-        Product productSave = service.buscarProduto(1);
+        Product productSave = service.findProduct(1);
 
-        assertEquals(50, productSave.getQuantidadeEstoque());
+        assertEquals(50, productSave.getQuantityStock());
     }
 
     @Test
-    void deveRemoverEstoqueComSucesso() {
+    void mustRemoveStockWithSucess() {
         ProductService service = new ProductService();
 
-        service.cadastrarProduto(1, "Ventilador", 320.0, 25);
-        service.removerEstoque(1, 25);
+        service.registerProduct(1, "Ventilador", 320.0, 25);
+        service.removeStock(1, 25);
 
-        Product productSave = service.buscarProduto(1);
+        Product productSave = service.findProduct(1);
 
-        assertEquals(0, productSave.getQuantidadeEstoque());
+        assertEquals(0, productSave.getQuantityStock());
     }
 }

@@ -12,37 +12,38 @@ public class ProductService {
         this.products = new HashMap<>();
     }
 
-    public void cadastrarProduto(Integer id, String nome, double preco, Integer quantidadeEstoque) {
+    public void registerProduct(Integer id, String name, double price, Integer quantitystock) {
         if (products.containsKey(id)) {
             throw new IllegalArgumentException("Produto já cadastrado!");
         }
 
-        Product product = new Product(id, nome, preco, quantidadeEstoque);
+        Product product = new Product(id, name, price, quantitystock
+        );
 
         products.put(id, product);
     }
 
-    public Product buscarProduto(Integer id) {
+    public Product findProduct(Integer id) {
         return products.get(id);
     }
 
-    public void adicionarEstoque(Integer id, Integer quantidade) {
-        Product product = buscarProduto(id);
+    public void addStock(Integer id, Integer quantity) {
+        Product product = findProduct(id);
 
         if (product == null) {
             throw new IllegalArgumentException("Produto não existe");
         }
 
-        product.adicionarEstoque(quantidade);
+        product.adicionarEstoque(quantity);
     }
 
-    public void removerEstoque(Integer id, Integer quantidade) {
-        Product product = buscarProduto(id);
+    public void removeStock(Integer id, Integer quantity) {
+        Product product = findProduct(id);
 
         if (product == null) {
             throw new IllegalArgumentException("Produto não existe");
         }
 
-        product.removerEstoque(quantidade);
+        product.removerEstoque(quantity);
     }
 }
